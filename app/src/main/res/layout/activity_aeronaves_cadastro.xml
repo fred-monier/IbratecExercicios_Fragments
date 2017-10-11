@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="ibratec.recife.pe.br.ibratecexercicios_fragments.AeronavesCadastro">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Aeronaves - Cadastro"/>
+
+        <EditText
+            android:id="@+id/edtTxtModelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:hint="Modelo"/>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Fabricante:"
+                android:textColor="#0f0e0e"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                />
+
+            <Spinner
+                android:id="@+id/spFabricante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+            </Spinner>
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/swtAsaFixa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textOn="@string/swtAsaFixa_on"
+            android:textOff="@string/swtAsaFixa_off"
+            android:showText="true"
+            android:text="Asa:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="left"
+            android:checked="true" />
+
+        <CheckBox
+            android:id="@+id/chBoxTremRetrat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="left"
+            android:text="Trem retrátil"
+            android:checked="false" />
+
+        <CheckBox
+            android:id="@+id/chBoxMultimotor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="left"
+            android:text="Multimotor"
+            android:checked="false" />
+
+        <TextView
+            android:id="@+id/txtVwVelCruzeiro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Velocidade de cruzeiro:"
+            android:textColor="#0f0e0e"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+             />
+
+        <SeekBar
+            android:id="@+id/seeBarVelCruzeiro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:max="1000"
+            android:progress="400"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Hangar:"
+            android:textColor="#0f0e0e"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
+
+        <RadioGroup
+            android:id="@+id/rdGrHangar"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+
+            <RadioButton
+                android:id="@+id/rdBtHangarHA01"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="10dp"
+                android:text="HA 01"
+                android:checked="true">
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/rdBtHangarHA02"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="10dp"
+                android:text="HA 02">
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/rdBtHangarHA03"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="10dp"
+                android:text="HA 03">
+            </RadioButton>
+
+        </RadioGroup>
+
+        <ToggleButton
+            android:id="@+id/tgBtDisponib"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textOn="@string/tgBtDisponib_on"
+            android:textOff="@string/tgBtDisponib_off"
+            android:gravity="left"
+            android:checked="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CANCELAR"/>
+
+            <Button
+                android:id="@+id/btnSalvar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SALVAR"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
