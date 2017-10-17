@@ -47,7 +47,6 @@ public class AeronavesCadastroFragment extends Fragment {
     private RadioButton rdBtHangarHA03;
     private ToggleButton tgBtDisponib;
 
-
     public static AeronavesCadastroFragment novaInstancia(Aeronave aeronaveWork) {
 
         Bundle parametros = new Bundle();
