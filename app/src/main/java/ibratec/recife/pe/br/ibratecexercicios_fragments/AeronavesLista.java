@@ -11,11 +11,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import ibratec.recife.pe.br.ibratecexercicios_fragments.R;
 
 public class AeronavesLista extends AppCompatActivity {
 
@@ -63,7 +60,7 @@ public class AeronavesLista extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AeronavesLista.this, AeronavesCadastro.class);
+                Intent intent = new Intent(AeronavesLista.this, AeronavesCadastroActivity.class);
                 startActivityForResult(intent, CADASTRAR_AERONAVE);
             }
         });
@@ -113,7 +110,7 @@ public class AeronavesLista extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
-                Intent intent = new Intent(AeronavesLista.this, AeronavesCadastro.class);
+                Intent intent = new Intent(AeronavesLista.this, AeronavesCadastroActivity.class);
                 intent.putExtra(AERONAVE, aeronaveWork);
                 startActivityForResult(intent, CADASTRAR_AERONAVE);
 
