@@ -50,7 +50,7 @@ public class AeronavesCadastroFragment extends Fragment {
     public static AeronavesCadastroFragment novaInstancia(Aeronave aeronaveWork) {
 
         Bundle parametros = new Bundle();
-        parametros.putSerializable(AeronavesLista.AERONAVE, aeronaveWork);
+        parametros.putSerializable(AeronavesListaActivity.AERONAVE, aeronaveWork);
 
         AeronavesCadastroFragment aeronavesCadastroFragment = new AeronavesCadastroFragment();
         aeronavesCadastroFragment.setArguments(parametros);
@@ -63,7 +63,7 @@ public class AeronavesCadastroFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
 
-        this.aeronaveWork = (Aeronave) getArguments().getSerializable(AeronavesLista.AERONAVE);
+        this.aeronaveWork = (Aeronave) getArguments().getSerializable(AeronavesListaActivity.AERONAVE);
         this.aeronaveDAO = AeronaveDAO.getInstancia(this.getContext());
 
     }

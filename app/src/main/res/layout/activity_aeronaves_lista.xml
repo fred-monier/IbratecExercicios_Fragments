@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<FrameLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,57 +9,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:orientation="vertical"
+    android:id = "@+id/lista"
 
-    tools:context="ibratec.recife.pe.br.ibratecexercicios_fragments.AeronavesLista">
+    tools:context="ibratec.recife.pe.br.ibratecexercicios_fragments.AeronavesListaActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/edtTxtModeloPesq"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Pesquisar Modelo" />
-
-        <Button
-            android:id="@+id/btPesquisarModelo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pesquisar"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Aeronaves - Lista"/>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ListView
-            android:id="@+id/listview1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_input_add"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-           />
-
-
-    </FrameLayout>
-
-</LinearLayout>
+</FrameLayout>

@@ -16,7 +16,7 @@ public class AeronavesCadastroActivity extends AppCompatActivity implements IAer
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aeronaves_cadastro);
 
-        Aeronave aeronave = (Aeronave) getIntent().getSerializableExtra(AeronavesLista.AERONAVE);
+        Aeronave aeronave = (Aeronave) getIntent().getSerializableExtra(AeronavesListaActivity.AERONAVE);
         AeronavesCadastroFragment fragment = AeronavesCadastroFragment.novaInstancia(aeronave);
 
         FragmentManager fragmentManager = getSupportFragmentManager();

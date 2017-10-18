@@ -25,21 +25,19 @@ public class AeronavesListaFragment extends Fragment {
 
     public static final String TAG = "TagDetalhe";
 
-    private static final String LISTA_AERONAVES = "ListaAeronaves";
-
-    private EditText edtTxtModeloPesq;
-
     private Aeronave aeronaveWork;
+    private AeronaveDAO aeronaveDAO;
+
     private ArrayList<Aeronave> listaAeronaves;
     private AeronavesAdapter listaAeronavesAdapter;
 
-    private AeronaveDAO aeronaveDAO;
+    private EditText edtTxtModeloPesq;
+
+    private boolean flagMore = false;
 
     public static AeronavesListaFragment novaInstancia() {
 
-        AeronavesListaFragment aeronavesListaFragment = new AeronavesListaFragment();
-
-        return aeronavesListaFragment;
+        return new AeronavesListaFragment();
     }
 
     @Override
@@ -48,12 +46,6 @@ public class AeronavesListaFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         this.aeronaveDAO = AeronaveDAO.getInstancia(this.getContext());
-
-//        if (savedInstanceState != null) {
-//            listaAeronaves = (ArrayList<Aeronave>) savedInstanceState.getSerializable(LISTA_AERONAVES);
-//        } else {
-//            listaAeronaves = new ArrayList<Aeronave>();
-//        }
 
         listaAeronaves = new ArrayList<Aeronave>();
 
@@ -94,11 +86,16 @@ public class AeronavesListaFragment extends Fragment {
         return layout;
     }
 
-//    @Override
-//    public void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        outState.putSerializable(LISTA_AERONAVES, listaAeronaves);
-//    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (flagMore) {
+            pesquisar();
+        } else {
+            flagMore = true;
+        }
+
+    }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -157,10 +154,4 @@ public class AeronavesListaFragment extends Fragment {
         registerForContextMenu(listaAeronavesView);
     }
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        pesquisar();
-    }
 }
