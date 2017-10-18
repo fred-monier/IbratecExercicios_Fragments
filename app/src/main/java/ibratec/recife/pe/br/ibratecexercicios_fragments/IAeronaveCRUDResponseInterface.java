@@ -8,4 +8,5 @@ public interface IAeronaveCRUDResponseInterface {
 
     void operacaoCancelada();
     void operacaoConcluida(Aeronave aeronaveWork);
+
 }
