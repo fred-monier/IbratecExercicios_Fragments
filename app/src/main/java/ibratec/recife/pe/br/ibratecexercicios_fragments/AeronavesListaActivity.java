@@ -20,14 +20,8 @@ public class AeronavesListaActivity extends AppCompatActivity implements IAerona
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aeronaves_lista);
 
-        AeronavesListaFragment fragment = AeronavesListaFragment.novaInstancia();
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.lista, fragment, AeronavesListaFragment.TAG);
-        fragmentTransaction.commit();
-
+        this.inserirListaFragment();
+        this.removerCadastroFragment();
     }
 
     @Override
@@ -48,6 +42,21 @@ public class AeronavesListaActivity extends AppCompatActivity implements IAerona
         return getResources().getBoolean(R.bool.land);
     }
 
+    private void inserirListaFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        AeronavesListaFragment fragment = (AeronavesListaFragment) fragmentManager.
+                findFragmentByTag(AeronavesListaFragment.TAG);
+
+        if (fragment == null) {
+            fragment = AeronavesListaFragment.novaInstancia();
+
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.lista, fragment, AeronavesListaFragment.TAG);
+            fragmentTransaction.commit();
+        }
+
+    }
+
     private void inserirCadastroFragment(Aeronave aeronaveWork) {
 
         AeronavesCadastroFragment fragment = AeronavesCadastroFragment.novaInstancia(aeronaveWork);
@@ -65,9 +74,11 @@ public class AeronavesListaActivity extends AppCompatActivity implements IAerona
         AeronavesCadastroFragment fragment = (AeronavesCadastroFragment) fragmentManager.
                 findFragmentByTag(AeronavesCadastroFragment.TAG);
 
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.remove(fragment);
-        fragmentTransaction.commit();
+        if ( fragment != null) {
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.remove(fragment);
+            fragmentTransaction.commit();
+        }
     }
 
     @Override

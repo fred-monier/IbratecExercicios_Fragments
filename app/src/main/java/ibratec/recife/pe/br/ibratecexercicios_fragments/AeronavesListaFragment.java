@@ -25,6 +25,8 @@ public class AeronavesListaFragment extends Fragment {
 
     public static final String TAG = "TagLista";
 
+    private static final String LISTA_AERONAVES = "ListaAeronaves";
+
     private Aeronave aeronaveWork;
     private AeronaveDAO aeronaveDAO;
 
@@ -47,7 +49,11 @@ public class AeronavesListaFragment extends Fragment {
 
         this.aeronaveDAO = AeronaveDAO.getInstancia(this.getContext());
 
-        listaAeronaves = new ArrayList<Aeronave>();
+        if (savedInstanceState != null) {
+            listaAeronaves = (ArrayList<Aeronave>) savedInstanceState.getSerializable(LISTA_AERONAVES);
+        } else {
+            listaAeronaves = new ArrayList<Aeronave>();
+        }
 
     }
 
@@ -84,6 +90,12 @@ public class AeronavesListaFragment extends Fragment {
         ////////////////
 
         return layout;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(LISTA_AERONAVES, listaAeronaves);
     }
 
     @Override
