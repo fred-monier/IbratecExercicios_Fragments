@@ -29,10 +29,7 @@ public class AeronavesListaActivity extends AppCompatActivity implements IAerona
 
         if (resultCode == RESULT_OK) {
 
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            AeronavesListaFragment fragmentLista = (AeronavesListaFragment) fragmentManager.
-                    findFragmentByTag(AeronavesListaFragment.TAG);
-            fragmentLista.pesquisarPublico();
+            this.recarregarPesquisa();
 
         } else if (resultCode == RESULT_CANCELED) {}
 
@@ -81,6 +78,13 @@ public class AeronavesListaActivity extends AppCompatActivity implements IAerona
         }
     }
 
+    private void recarregarPesquisa() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        AeronavesListaFragment fragmentLista = (AeronavesListaFragment) fragmentManager.
+                findFragmentByTag(AeronavesListaFragment.TAG);
+        fragmentLista.pesquisarPublico();
+    }
+
     @Override
     public void operacaoCadastar(Aeronave aeronaveWork) {
         if(isLandscape()) {
@@ -109,9 +113,8 @@ public class AeronavesListaActivity extends AppCompatActivity implements IAerona
         Toast toast = Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_SHORT);
         toast.show();
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        AeronavesListaFragment fragmentLista = (AeronavesListaFragment) fragmentManager.
-                findFragmentByTag(AeronavesListaFragment.TAG);
-        fragmentLista.pesquisarPublico();
+        this.recarregarPesquisa();
     }
+
+
 }

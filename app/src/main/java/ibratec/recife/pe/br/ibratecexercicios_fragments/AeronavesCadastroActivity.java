@@ -29,13 +29,20 @@ public class AeronavesCadastroActivity extends AppCompatActivity implements IAer
 
     @Override
     public void operacaoCancelada() {
+
+        Intent intent = getIntent();
+        setResult(Activity.RESULT_CANCELED, intent);
         finish();
     }
 
     @Override
     public void operacaoConcluida() {
+
         Toast toast = Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_SHORT);
         toast.show();
+
+        Intent intent = getIntent();
+        setResult(Activity.RESULT_OK, intent);
         finish();
     }
 }
