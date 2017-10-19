@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class AeronavesListaFragment extends Fragment {
 
-    public static final String TAG = "TagDetalhe";
+    public static final String TAG = "TagLista";
 
     private Aeronave aeronaveWork;
     private AeronaveDAO aeronaveDAO;
@@ -87,17 +87,6 @@ public class AeronavesListaFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        if (flagMore) {
-            pesquisar();
-        } else {
-            flagMore = true;
-        }
-
-    }
-
-    @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -152,6 +141,10 @@ public class AeronavesListaFragment extends Fragment {
         listaAeronavesView.setAdapter(listaAeronavesAdapter);
 
         registerForContextMenu(listaAeronavesView);
+    }
+
+    public void pesquisarPublico() {
+        pesquisar();
     }
 
 }

@@ -137,7 +137,7 @@ public class AeronavesCadastroFragment extends Fragment {
 
                     //concluir operação
                     IAeronaveCRUDResponseInterface act = (IAeronaveCRUDResponseInterface) getActivity();
-                    act.operacaoConcluida(aeronaveWork);
+                    act.operacaoConcluida();
 
                 } else {
                     Toast toast = Toast.makeText(getContext(), "Você deve informar um Modelo", Toast.LENGTH_SHORT);

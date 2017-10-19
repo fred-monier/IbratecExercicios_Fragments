@@ -33,7 +33,7 @@ public class AeronavesCadastroActivity extends AppCompatActivity implements IAer
     }
 
     @Override
-    public void operacaoConcluida(Aeronave aeronaveWork) {
+    public void operacaoConcluida() {
         Toast toast = Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_SHORT);
         toast.show();
         finish();

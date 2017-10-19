@@ -7,6 +7,6 @@ package ibratec.recife.pe.br.ibratecexercicios_fragments;
 public interface IAeronaveCRUDResponseInterface {
 
     void operacaoCancelada();
-    void operacaoConcluida(Aeronave aeronaveWork);
+    void operacaoConcluida();
 
 }
