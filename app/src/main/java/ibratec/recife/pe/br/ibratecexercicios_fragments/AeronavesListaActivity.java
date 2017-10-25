@@ -3,12 +3,18 @@ package ibratec.recife.pe.br.ibratecexercicios_fragments;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+;
 import android.widget.Toast;
 
-public class AeronavesListaActivity extends AppCompatActivity implements IAeronaveCRUDRequestInterface,
-        IAeronaveCRUDResponseInterface {
+public class AeronavesListaActivity extends AppCompatActivity
+        implements IAeronaveCRUDRequestInterface, IAeronaveCRUDResponseInterface,
+        SearchView.OnQueryTextListener, MenuItemCompat.OnActionExpandListener {
 
     public static final String AERONAVE = "Aeronave";
 
@@ -29,10 +35,31 @@ public class AeronavesListaActivity extends AppCompatActivity implements IAerona
 
         if (resultCode == RESULT_OK) {
 
-            this.recarregarPesquisa();
+            this.recarregarPesquisa(null);
 
         } else if (resultCode == RESULT_CANCELED) {}
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.aeronave_tool_bar_opcoes, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(this);
+        searchView.setQueryHint(getString(R.string.hint_pesquisar));
+
+        MenuItemCompat.setOnActionExpandListener(searchItem, this);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     private boolean isLandscape() {
@@ -78,11 +105,11 @@ public class AeronavesListaActivity extends AppCompatActivity implements IAerona
         }
     }
 
-    private void recarregarPesquisa() {
+    private void recarregarPesquisa(String modelo) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         AeronavesListaFragment fragmentLista = (AeronavesListaFragment) fragmentManager.
                 findFragmentByTag(AeronavesListaFragment.TAG);
-        fragmentLista.pesquisarPublico();
+        fragmentLista.pesquisarPublico(modelo);
     }
 
     @Override
@@ -113,7 +140,31 @@ public class AeronavesListaActivity extends AppCompatActivity implements IAerona
         Toast toast = Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_SHORT);
         toast.show();
 
-        this.recarregarPesquisa();
+        this.recarregarPesquisa(null);
+    }
+
+    @Override
+    public boolean onMenuItemActionExpand(MenuItem item) {
+        return true;
+    }
+
+    @Override
+    public boolean onMenuItemActionCollapse(MenuItem item) {
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        this.recarregarPesquisa(query);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        if (newText == null || newText.equals("") || ((newText.length() >= 3))) {
+            this.recarregarPesquisa(newText);
+        }
+        return true;
     }
 
 

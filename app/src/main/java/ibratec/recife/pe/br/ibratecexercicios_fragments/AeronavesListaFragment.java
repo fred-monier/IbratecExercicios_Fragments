@@ -33,10 +33,6 @@ public class AeronavesListaFragment extends Fragment {
     private ArrayList<Aeronave> listaAeronaves;
     private AeronavesAdapter listaAeronavesAdapter;
 
-    private EditText edtTxtModeloPesq;
-
-    private boolean flagMore = false;
-
     public static AeronavesListaFragment novaInstancia() {
 
         return new AeronavesListaFragment();
@@ -66,28 +62,15 @@ public class AeronavesListaFragment extends Fragment {
 
         this.montarLista(layout);
 
-        //inicializando componentes
-        edtTxtModeloPesq = (EditText) layout.findViewById(R.id.edtTxtModeloPesq);
-
-        Button btPesquisarModelo = (Button) layout.findViewById(R.id.btPesquisarModelo);
-        btPesquisarModelo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pesquisar();
-            }
-        });
-
         FloatingActionButton button1 = (FloatingActionButton) layout.findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //cadastrar
                 IAeronaveCRUDRequestInterface act = (IAeronaveCRUDRequestInterface) getActivity();
                 act.operacaoCadastar(null);
             }
         });
-        ////////////////
 
         return layout;
     }
@@ -111,7 +94,7 @@ public class AeronavesListaFragment extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
 
                 aeronaveDAO.excluir(aeronaveWork);
-                pesquisar();
+                pesquisar(null);
 
                 return true;
             }
@@ -135,11 +118,7 @@ public class AeronavesListaFragment extends Fragment {
 
     }
 
-    private void pesquisar() {
-        String modelo = null;
-        if (edtTxtModeloPesq.getText() != null && !edtTxtModeloPesq.getText().toString().equals("")) {
-            modelo = edtTxtModeloPesq.getText().toString();
-        }
+    private void pesquisar(String modelo) {
 
         ArrayList<Aeronave> resultado = (ArrayList<Aeronave>) aeronaveDAO.buscarAeronavesPorModelo(modelo);
         listaAeronaves.clear();
@@ -155,8 +134,8 @@ public class AeronavesListaFragment extends Fragment {
         registerForContextMenu(listaAeronavesView);
     }
 
-    public void pesquisarPublico() {
-        pesquisar();
+    public void pesquisarPublico(String modelo) {
+        pesquisar(modelo);
     }
 
 }

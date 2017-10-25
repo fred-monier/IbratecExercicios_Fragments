@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">IbratecExercicios_Fragments</string>
+    <string name="app_name">Fragments</string>
 
     <string name="swtAsaFixa_on">Fixa</string>
     <string name="swtAsaFixa_off">Rotativa</string>
     <string name="tgBtDisponib_on">Apto para vôo</string>
     <string name="tgBtDisponib_off">Em manutenção</string>
+
+    <string name="acao_pesquisar">Pesquisar</string>
+    <string name="hint_pesquisar">Procurar Aeronave</string>
 </resources>
