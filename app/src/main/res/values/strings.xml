@@ -7,6 +7,7 @@
     <string name="tgBtDisponib_off">Em manutenção</string>
 
     <string name="acao_pesquisar">Pesquisar</string>
+    <string name="acao_relatorio">Relatório</string>
     <string name="hint_pesquisar">Procurar Aeronave</string>
 
 </resources>

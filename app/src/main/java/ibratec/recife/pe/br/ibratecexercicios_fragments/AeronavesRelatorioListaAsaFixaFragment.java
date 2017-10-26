@@ -47,7 +47,7 @@ public class AeronavesRelatorioListaAsaFixaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View layout = inflater.inflate(R.layout.fragment_aeronaves_relatorio_lista_todas, container, false);
+        View layout = inflater.inflate(R.layout.fragment_aeronaves_relatorio_lista_asa_fixa, container, false);
 
         this.montarLista(layout);
 

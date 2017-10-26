@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Lista Aeronaves de Asas Fixas"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Aeronaves de Asas Fixas"/>
 
     <FrameLayout
         android:layout_width="match_parent"

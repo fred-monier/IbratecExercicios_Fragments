@@ -7,7 +7,12 @@
     <item android:id="@+id/action_search"
         android:title="@string/acao_pesquisar"
         android:icon="@android:drawable/ic_menu_search"
-        app:showAsAction="collapseActionView|always"
+        app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="android.support.v7.widget.SearchView" />
+
+    <item android:id="@+id/action_report"
+        android:title="@string/acao_relatorio"
+        android:icon="@android:drawable/ic_menu_report_image"
+        app:showAsAction="ifRoom|withText" />
 
 </menu>

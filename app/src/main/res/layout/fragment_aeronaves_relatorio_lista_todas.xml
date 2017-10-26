@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Aeronaves - Lista completa"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Todas as Aeronaves"/>
 
     <FrameLayout
         android:layout_width="match_parent"

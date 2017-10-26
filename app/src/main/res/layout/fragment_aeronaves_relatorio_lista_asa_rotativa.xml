@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Lista Aeronaves de Asas Rotativas"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Aeronaves de Asas Rotativas"/>
 
     <FrameLayout
         android:layout_width="match_parent"
