@@ -9,12 +9,11 @@ import android.support.v7.widget.SearchView;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-;
 import android.widget.Toast;
 
 public class AeronavesListaActivity extends AppCompatActivity
         implements IAeronaveCRUDRequestInterface, IAeronaveCRUDResponseInterface,
-        SearchView.OnQueryTextListener, MenuItemCompat.OnActionExpandListener {
+        SearchView.OnQueryTextListener, MenuItemCompat.OnActionExpandListener {//MenuItem.OnActionExpandListener {
 
     public static final String AERONAVE = "Aeronave";
 
@@ -25,6 +24,12 @@ public class AeronavesListaActivity extends AppCompatActivity
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aeronaves_lista);
+
+        //Android toolbar*********
+        //Descomentar aqui, onCreateOptionsMenu, fragment_aeronaves_listaS e styles.xml
+        //Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+        //************************
 
         this.inserirListaFragment();
         this.removerCadastroFragment();
@@ -49,12 +54,19 @@ public class AeronavesListaActivity extends AppCompatActivity
         MenuItem searchItem = menu.findItem(R.id.action_search);
 
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        //SearchView searchView = (SearchView) searchItem.getActionView();
+
         searchView.setOnQueryTextListener(this);
         searchView.setQueryHint(getString(R.string.hint_pesquisar));
 
         MenuItemCompat.setOnActionExpandListener(searchItem, this);
+        //searchItem.setOnActionExpandListener(this);
+
+
+        super.onCreateOptionsMenu(menu);
 
         return true;
+
     }
 
     @Override
