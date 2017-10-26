@@ -35,16 +35,16 @@ public class AeronaveDAO {
 
         ContentValues cv = new ContentValues();
 
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_MODELO, aeronave.getModelo());
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_FABRICANTE, aeronave.getFabricante());
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_ASA_FIXA, valorBooleano(aeronave.isAsaFixa()));
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_TREM_RETRATIL, valorBooleano(aeronave.isTremRetratil()));
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_MULTIMOTOR, valorBooleano(aeronave.isMultimotor()));
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_VELOCIDADE_CRUZEIRO, aeronave.getVelocidadeCruzeiro());
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_HANGAR, aeronave.getHangar());
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_APTO, valorBooleano(aeronave.isApto()));
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_MODELO, aeronave.getModelo());
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_FABRICANTE, aeronave.getFabricante());
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_ASA_FIXA, valorBooleano(aeronave.isAsaFixa()));
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_TREM_RETRATIL, valorBooleano(aeronave.isTremRetratil()));
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_MULTIMOTOR, valorBooleano(aeronave.isMultimotor()));
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_VELOCIDADE_CRUZEIRO, aeronave.getVelocidadeCruzeiro());
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_HANGAR, aeronave.getHangar());
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_APTO, valorBooleano(aeronave.isApto()));
 
-        long id = db.insert(bdHelper.TABELA_AERONAVE, null, cv);
+        long id = db.insert(AeronavesSQLHelper.TABELA_AERONAVE, null, cv);
 
         if (id != -1) {
             aeronave.setId(id);
@@ -61,17 +61,17 @@ public class AeronaveDAO {
 
         ContentValues cv = new ContentValues();
 
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_MODELO, aeronave.getModelo());
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_FABRICANTE, aeronave.getFabricante());
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_ASA_FIXA, valorBooleano(aeronave.isAsaFixa()));
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_TREM_RETRATIL, valorBooleano(aeronave.isTremRetratil()));
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_MULTIMOTOR, valorBooleano(aeronave.isMultimotor()));
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_VELOCIDADE_CRUZEIRO, aeronave.getVelocidadeCruzeiro());
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_HANGAR, aeronave.getHangar());
-        cv.put(bdHelper.TABELA_AERONAVE_COLUNA_APTO, valorBooleano(aeronave.isApto()));
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_MODELO, aeronave.getModelo());
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_FABRICANTE, aeronave.getFabricante());
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_ASA_FIXA, valorBooleano(aeronave.isAsaFixa()));
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_TREM_RETRATIL, valorBooleano(aeronave.isTremRetratil()));
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_MULTIMOTOR, valorBooleano(aeronave.isMultimotor()));
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_VELOCIDADE_CRUZEIRO, aeronave.getVelocidadeCruzeiro());
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_HANGAR, aeronave.getHangar());
+        cv.put(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_APTO, valorBooleano(aeronave.isApto()));
 
-        int linhasAlteradas = db.update(bdHelper.TABELA_AERONAVE, cv,
-                bdHelper.TABELA_AERONAVE_COLUNA_ID + " = ?",
+        int linhasAlteradas = db.update(AeronavesSQLHelper.TABELA_AERONAVE, cv,
+                AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_ID + " = ?",
                 new String[]{String.valueOf(aeronave.getId())});
         db.close();
 
@@ -89,8 +89,8 @@ public class AeronaveDAO {
     public int excluir(Aeronave aeronave) {
         SQLiteDatabase db = bdHelper.getWritableDatabase();
 
-        int linhasExcluidas = db.delete(bdHelper.TABELA_AERONAVE,
-                bdHelper.TABELA_AERONAVE_COLUNA_ID + " = ?",
+        int linhasExcluidas = db.delete(AeronavesSQLHelper.TABELA_AERONAVE,
+                AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_ID + " = ?",
                 new String[]{String.valueOf(aeronave.getId())});
         db.close();
 
@@ -103,28 +103,28 @@ public class AeronaveDAO {
 
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
-        String sql = "SELECT * FROM " + bdHelper.TABELA_AERONAVE;
+        String sql = "SELECT * FROM " + AeronavesSQLHelper.TABELA_AERONAVE;
         String[] args = null;
 
         if (modelo != null) {
-            sql = sql + " WHERE " + bdHelper.TABELA_AERONAVE_COLUNA_MODELO + " LIKE ?";
+            sql = sql + " WHERE " + AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_MODELO + " LIKE ?";
             args = new String[]{"%" + modelo + "%"};
         }
 
-        sql = sql + " ORDER BY " + bdHelper.TABELA_AERONAVE_COLUNA_MODELO;
+        sql = sql + " ORDER BY " + AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_MODELO;
 
         Cursor cursor = db.rawQuery(sql, args);
         while (cursor.moveToNext()) {
 
-            long idCol = cursor.getLong(cursor.getColumnIndex(bdHelper.TABELA_AERONAVE_COLUNA_ID));
-            String modeloCol = cursor.getString(cursor.getColumnIndex(bdHelper.TABELA_AERONAVE_COLUNA_MODELO));
-            String fabCol = cursor.getString(cursor.getColumnIndex(bdHelper.TABELA_AERONAVE_COLUNA_FABRICANTE));
-            int asaCol = cursor.getInt(cursor.getColumnIndex(bdHelper.TABELA_AERONAVE_COLUNA_ASA_FIXA));
-            int tremCol = cursor.getInt(cursor.getColumnIndex(bdHelper.TABELA_AERONAVE_COLUNA_TREM_RETRATIL));
-            int mulCol = cursor.getInt(cursor.getColumnIndex(bdHelper.TABELA_AERONAVE_COLUNA_MULTIMOTOR));
-            int velCol = cursor.getInt(cursor.getColumnIndex(bdHelper.TABELA_AERONAVE_COLUNA_VELOCIDADE_CRUZEIRO));
-            String hanCol = cursor.getString(cursor.getColumnIndex(bdHelper.TABELA_AERONAVE_COLUNA_HANGAR));
-            int aptCol = cursor.getInt(cursor.getColumnIndex(bdHelper.TABELA_AERONAVE_COLUNA_APTO));
+            long idCol = cursor.getLong(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_ID));
+            String modeloCol = cursor.getString(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_MODELO));
+            String fabCol = cursor.getString(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_FABRICANTE));
+            int asaCol = cursor.getInt(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_ASA_FIXA));
+            int tremCol = cursor.getInt(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_TREM_RETRATIL));
+            int mulCol = cursor.getInt(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_MULTIMOTOR));
+            int velCol = cursor.getInt(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_VELOCIDADE_CRUZEIRO));
+            String hanCol = cursor.getString(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_HANGAR));
+            int aptCol = cursor.getInt(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_APTO));
 
             Aeronave aeronave = new Aeronave();
             aeronave.setId(idCol);
@@ -140,7 +140,56 @@ public class AeronaveDAO {
             res.add(aeronave);
         }
 
+        cursor.close();
+
         return res;
+    }
+
+    public List<Aeronave> buscarAeronavesPorAsaFixa(boolean asaFixa) {
+
+        List<Aeronave> res = new ArrayList<Aeronave>();
+
+        SQLiteDatabase db = bdHelper.getReadableDatabase();
+
+        String sql = "SELECT * FROM " + AeronavesSQLHelper.TABELA_AERONAVE;
+
+        sql = sql + " WHERE " + AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_ASA_FIXA + " = ?";
+
+        String args[] = new String[]{"" + this.valorBooleano(asaFixa) + ""};
+
+        sql = sql + " ORDER BY " + AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_MODELO;
+
+        Cursor cursor = db.rawQuery(sql, args);
+        while (cursor.moveToNext()) {
+
+            long idCol = cursor.getLong(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_ID));
+            String modeloCol = cursor.getString(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_MODELO));
+            String fabCol = cursor.getString(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_FABRICANTE));
+            int asaCol = cursor.getInt(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_ASA_FIXA));
+            int tremCol = cursor.getInt(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_TREM_RETRATIL));
+            int mulCol = cursor.getInt(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_MULTIMOTOR));
+            int velCol = cursor.getInt(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_VELOCIDADE_CRUZEIRO));
+            String hanCol = cursor.getString(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_HANGAR));
+            int aptCol = cursor.getInt(cursor.getColumnIndex(AeronavesSQLHelper.TABELA_AERONAVE_COLUNA_APTO));
+
+            Aeronave aeronave = new Aeronave();
+            aeronave.setId(idCol);
+            aeronave.setModelo(modeloCol);
+            aeronave.setFabricante(fabCol);
+            aeronave.setAsaFixa(valorInt(asaCol));
+            aeronave.setTremRetratil(valorInt(tremCol));
+            aeronave.setMultimotor(valorInt(mulCol));
+            aeronave.setVelocidadeCruzeiro(velCol);
+            aeronave.setHangar(hanCol);
+            aeronave.setApto(valorInt(aptCol));
+
+            res.add(aeronave);
+        }
+
+        cursor.close();
+
+        return res;
+
     }
 
     private int valorBooleano(Boolean valor) {
